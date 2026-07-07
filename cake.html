@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Celebrate Your Birthday! 🎂</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="./cake.css">
+</head>
+<body>
+    <div class="custom-cursor">
+        <svg viewBox="0 0 24 24">
+            <path fill="#ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <h1>🎂 Let's Celebrate Your Birthday</h1>
+        <p class="cake-subtext">
+            It's Time To Celebrate!<br>
+            Before reading my birthday letter, let's celebrate your special day first.<br><br>
+            ✨ Close your eyes, make a beautiful wish, and cut your birthday cake.
+        </p>
+
+        <div class="cake-scene" id="cakeScene">
+            <div class="balloons" id="balloons"></div>
+
+            <div class="cake-wrapper" id="cakeWrapper">
+                <svg class="cake-svg" id="cakeSvg" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <symbol id="cakeArt" viewBox="0 0 360 260">
+                            <!-- plate -->
+                            <ellipse cx="180" cy="235" rx="150" ry="14" fill="#ffd9ec"/>
+                            <!-- bottom tier -->
+                            <rect x="60" y="150" width="240" height="80" rx="14" fill="#fff0f6"/>
+                            <rect x="60" y="150" width="240" height="22" rx="10" fill="#ff9ccF"/>
+                            <!-- drips -->
+                            <path d="M60,172 q15,20 30,0 q15,20 30,0 q15,20 30,0 q15,20 30,0 q15,20 30,0 q15,20 30,0 q15,20 30,0 L300,172 Z" fill="#ff9ccf"/>
+                            <!-- top tier -->
+                            <rect x="100" y="90" width="160" height="65" rx="12" fill="#fff7fb"/>
+                            <rect x="100" y="90" width="160" height="18" rx="8" fill="#ffb6da"/>
+                            <path d="M100,108 q13,16 26,0 q13,16 26,0 q13,16 26,0 q13,16 26,0 q13,16 26,0 L260,108 Z" fill="#ffb6da"/>
+                            <!-- dots -->
+                            <circle cx="90" cy="195" r="5" fill="#ff69b4"/>
+                            <circle cx="140" cy="205" r="5" fill="#c9a9ff"/>
+                            <circle cx="200" cy="195" r="5" fill="#ff69b4"/>
+                            <circle cx="250" cy="205" r="5" fill="#c9a9ff"/>
+                            <circle cx="130" cy="130" r="4" fill="#ff69b4"/>
+                            <circle cx="180" cy="140" r="4" fill="#c9a9ff"/>
+                            <circle cx="230" cy="130" r="4" fill="#ff69b4"/>
+                            <!-- cherry -->
+                            <circle cx="180" cy="80" r="9" fill="#ff4d8d"/>
+                        </symbol>
+                    </defs>
+
+                    <!-- left half -->
+                    <g class="cake-half-left" id="cakeLeft">
+                        <clipPath id="clipLeft">
+                            <rect x="0" y="0" width="180" height="260"/>
+                        </clipPath>
+                        <g clip-path="url(#clipLeft)">
+                            <use href="#cakeArt" x="0" y="0"/>
+                        </g>
+                    </g>
+
+                    <!-- right half -->
+                    <g class="cake-half-right" id="cakeRight">
+                        <clipPath id="clipRight">
+                            <rect x="180" y="0" width="180" height="260"/>
+                        </clipPath>
+                        <g clip-path="url(#clipRight)">
+                            <use href="#cakeArt" x="0" y="0"/>
+                        </g>
+                    </g>
+
+                    <!-- candle + flame, sits on top of the cake, not clipped -->
+                    <g id="candleGroup">
+                        <rect x="172" y="45" width="16" height="30" rx="3" fill="#8a6dff"/>
+                        <rect x="172" y="45" width="16" height="6" fill="#fff" opacity="0.5"/>
+                        <path class="candle-flame" id="candleFlame" d="M180,20 q8,10 0,25 q-8,-15 0,-25 Z" fill="#ffb84d"/>
+                    </g>
+                </svg>
+
+                <div class="knife" id="knife">🔪</div>
+            </div>
+
+            <div class="cut-instruction" id="cutInstruction">Swipe the knife across the cake ➡️</div>
+        </div>
+    </div>
+
+    <div class="confetti-layer" id="confettiLayer"></div>
+
+    <div class="cake-popup-overlay" id="popupOverlay">
+        <div class="cake-popup" id="popupCard">
+            <div class="popup-heading">🎉 Happy Birthday Bubbly!</div>
+            <div class="popup-message">
+                May Allah bless your life with endless happiness,<br>
+                good health,<br>
+                peace,<br>
+                success,<br>
+                beautiful memories,<br>
+                and countless reasons to smile.<br><br>
+                May every prayer hidden inside your heart<br>
+                find its way to reality.<br><br>
+                Have the most beautiful birthday ever. ❤️
+            </div>
+            <button class="shuffle-button" id="continueBtn">Continue to My Letter 💌</button>
+        </div>
+    </div>
+
+    <script src="cake.js"></script>
+</body>
+</html>
