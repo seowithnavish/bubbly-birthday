@@ -89,6 +89,7 @@ window.addEventListener('load', () => {
                 duration: 1,
                 onComplete: () => {
                     window.location.href = 'cake.html'; // Now leads to the new Birthday Cake section before the reasons page
+                }
             });
         });
     });
