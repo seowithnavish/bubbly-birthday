@@ -329,6 +329,30 @@
             border-radius: 6px;
         }
 
+         #music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        #music-toggle:hover {
+            transform: scale(1.1);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .welcome h1 {
@@ -386,6 +410,34 @@
         <p>Happy Birthday once again, Bubbly! 🎂💖</p>
         <a href="#" class="goodbye-btn">Make One Birthday Wish💝</a>
     </section>
+
+     <audio id="bg-music" src="music.mp3" loop></audio>
+    <button id="music-toggle" aria-label="Toggle music">🔊</button>
+
+    <script>
+        // Background music (continues from cause.html)
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+
+        const savedTime = sessionStorage.getItem('bgMusicTime');
+        if (savedTime) bgMusic.currentTime = parseFloat(savedTime);
+
+        const isMuted = sessionStorage.getItem('bgMusicMuted') === 'true';
+        bgMusic.muted = isMuted;
+        musicToggle.textContent = isMuted ? '🔇' : '🔊';
+
+        bgMusic.play().catch(() => {
+            // Autoplay blocked by browser — start on first tap/click instead
+            document.addEventListener('click', () => bgMusic.play(), { once: true });
+        });
+
+        musicToggle.addEventListener('click', () => {
+            bgMusic.muted = !bgMusic.muted;
+            musicToggle.textContent = bgMusic.muted ? '🔇' : '🔊';
+            sessionStorage.setItem('bgMusicMuted', bgMusic.muted);
+        });
+    </script>
+    
 </body>
 
 </html>
