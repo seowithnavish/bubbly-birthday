@@ -192,3 +192,27 @@ h1 {
     margin-top: 1rem;
     opacity: 0.7;
 }
+
+#music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(45deg, #ff69b4, #ff99cc);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+#music-toggle:hover {
+    transform: scale(1.1);
+}
