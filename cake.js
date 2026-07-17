@@ -224,3 +224,29 @@ window.addEventListener('load', () => {
     knifeBounds();
     gsap.set(knife, { x: 20, rotation: -15 });
 });
+
+// Background music (continues from index.html)
+const bgMusic = document.getElementById('bg-music');
+const musicToggle = document.getElementById('music-toggle');
+
+const savedTime = sessionStorage.getItem('bgMusicTime');
+if (savedTime) bgMusic.currentTime = parseFloat(savedTime);
+
+const isMuted = sessionStorage.getItem('bgMusicMuted') === 'true';
+bgMusic.muted = isMuted;
+musicToggle.textContent = isMuted ? '🔇' : '🔊';
+
+bgMusic.play().catch(() => {
+    // Autoplay blocked by browser — start on first tap/click instead
+    document.addEventListener('click', () => bgMusic.play(), { once: true });
+});
+
+musicToggle.addEventListener('click', () => {
+    bgMusic.muted = !bgMusic.muted;
+    musicToggle.textContent = bgMusic.muted ? '🔇' : '🔊';
+    sessionStorage.setItem('bgMusicMuted', bgMusic.muted);
+});
+
+window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('bgMusicTime', bgMusic.currentTime);
+});
